@@ -1,0 +1,15 @@
+<div class="calendar-events-container">
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected"></mat-calendar>
+      </mat-card>
+    <div class="events-description">
+      <h2>Events Description</h2>
+      <div *ngIf="selectedEvent">
+        <h3>{{ selectedEvent.title }}</h3>
+        <p>{{ selectedEvent.description }}</p>
+      </div>
+      <div *ngIf="!selectedEvent">
+        <p>No event selected. Please select a date on the calendar.</p>
+      </div>
+    </div>
+  </div>

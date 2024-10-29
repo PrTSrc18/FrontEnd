@@ -1,0 +1,138 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 50px;
+}
+
+.header-section {
+  display: flex;
+  align-items: left;
+  padding-bottom: 15px;
+}
+
+.main-layout {
+  display: flex;
+}
+
+.left-section {
+  flex: 1.2;
+  padding: 10px;
+}
+
+.right-section{
+  flex: 1;
+  padding: 10px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-fields {
+  margin-bottom: 20px;
+}
+
+.declarations {
+  margin-top: 20px;
+}
+
+.profile-image-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.related-people {
+  text-align: center;
+}
+
+.full-width {
+  grid-column: span 2; 
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center; 
+
+  margin-bottom: 15px; 
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column; 
+}
+
+.title {
+  font-size: xx-large; 
+  font-weight: bold; 
+  margin-right: 20px;
+  margin-left: 40px;
+}
+
+.divider {
+  width: 65%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the divider */
+  background-color: #ccc; /* Change color if needed */
+}
+
+mat-tab-group{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.related-people{
+  margin-top: 20px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 50px;
+}
+
+.tab-content {
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #3f51b5; /* Cor do título */
+}
+
+p {
+  font-size: 14px; /* Tamanho da fonte do texto */
+  color: #555; /* Cor do texto */
+}
+
+table {
+  width: 100%;
+}
+
+/* Paginator */
+.mat-paginator {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.mat-paginator-page-size {
+  font-weight: bold;
+}
+.filter{
+  width: 100%;
+}
+/* No data row */
+.mat-row.mat-no-data-row {
+  font-style: italic;
+  color: #888;
+}

@@ -1,0 +1,240 @@
+<mat-card class="profile-container">
+<!-- Header Section -->
+<div class="header-section">
+  <!-- Go Back Button -->
+  <div class="row">
+    <button mat-raised-button (click)="navigateToCustomerArea($event)" class="go-back">
+      <mat-icon>arrow_back</mat-icon>
+      Go back
+    </button>
+  </div>
+  
+  <!-- Title and Edit Button Row -->
+  <div class="row">
+    <mat-card-title class="title">Profile</mat-card-title>
+    <button mat-raised-button class="edit-button" (click)="handleButtonClick()">
+      <mat-icon *ngIf="!editEnabled">edit</mat-icon>
+      <mat-icon *ngIf="editEnabled">save</mat-icon>
+      {{ editEnabled ? 'Save' : 'Edit' }}
+    </button>
+  </div>
+</div>
+   
+
+
+  <mat-card-content>
+    <div class="main-layout">
+      <!-- Left Section: Form Fields -->
+      <div class="left-section">
+        <div class="form-fields">
+          <div class="two-columns">
+            <mat-form-field appearance="fill">
+              <mat-label>Modality</mat-label>
+              <mat-select [(ngModel)]="Modality" [disabled]="!editEnabled">
+                <mat-option value="option">Teste1</mat-option>
+                <mat-option value="option1">Teste2</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Member Number</mat-label>
+              <input matInput [(ngModel)]="MemberNumber" [disabled]="!editEnabled" />
+            </mat-form-field>
+          </div>
+
+          <!-- Outros campos de formulário -->
+          <div class="two-columns">
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput [(ngModel)]="FirstName" [disabled]="!editEnabled" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput [(ngModel)]="LastName" [disabled]="!editEnabled" />
+            </mat-form-field>
+          </div>
+
+          <div class="two-columns">          
+            <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Address</mat-label>
+            <input matInput [(ngModel)]="Address" [disabled]="!editEnabled" />
+            </mat-form-field>
+          </div>
+
+          <div class="two-columns">
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Locality</mat-label>
+              <input matInput [(ngModel)]="Locality" [disabled]="!editEnabled" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Postal Code</mat-label>
+              <input matInput [(ngModel)]="PostalCode" [disabled]="!editEnabled" />
+            </mat-form-field>
+  
+          </div>
+          <div class="two-columns">
+            <mat-form-field appearance="fill">
+              <mat-label>NIF</mat-label>
+              <input matInput [(ngModel)]="Nif" [disabled]="!editEnabled" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>NUS</mat-label>
+              <input matInput [(ngModel)]="NUS" [disabled]="!editEnabled" />
+            </mat-form-field>
+  
+          </div>
+
+          <div class="two-columns">
+         
+            <mat-form-field appearance="fill">
+              <mat-label>Apolice</mat-label>
+              <input matInput [(ngModel)]="Apolice" [disabled]="!editEnabled" />
+            </mat-form-field>
+  
+   
+            <mat-form-field appearance="fill">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [(ngModel)]="DateBirth" [disabled]="!editEnabled" type="date" />
+            </mat-form-field>
+  
+  
+          </div>
+
+          <mat-tab-group dynamicHeight backgroundColor="primary">
+            <mat-tab label="Alergias">
+              <div class="tab-content">
+                <h2>Alergias</h2>
+
+                <mat-form-field class="filter">
+                  <mat-label>Filter</mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria" #input >
+                </mat-form-field>
+
+                <div class="tableAddButton">
+                  <button mat-raised-button (click)="addData()" class="addButton">
+                      Add Alergia
+                  </button>
+              </div>
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                  <!-- Checkbox Column -->
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                      </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)"
+                                    [aria-label]="checkboxLabel(row)">
+                      </mat-checkbox>
+                    </td>
+                  </ng-container>
+
+                   <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let Alergias"> {{Alergias.name}} </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                      (click)="selection.toggle(row)">
+                  </tr>   
+                  
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+                </tr>
+
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                showFirstLastButtons
+                aria-label="Select page of Empregados">
+              </mat-paginator>
+
+              </div>
+            </mat-tab>
+            <mat-tab label="Problemas de Saúde">
+              <div class="tab-content">
+                <h2>Problemas de Saúde</h2>
+                <p> problemas de saúde relevantes.</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Restrições Alimentares">
+              <div class="tab-content">
+                <h2>Restrições Alimentares</h2>
+                <p> restrições alimentares.</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Necessidades Educativas">
+              <div class="tab-content">
+                <h2>Necessidades Educativas</h2>
+                <p> educativas especiais.</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Medicação">
+              <div class="tab-content">
+                <h2>Medicação</h2>
+                <p>Listagem de drogas !</p>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+
+
+
+
+          <!-- Declarações com checkboxes -->
+          <div class="declarations">
+           
+            <mat-checkbox>Autoriza a captação de fotografias e vídeos nos contextos anteriores [Captação de fotografias e vídeos]
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a utilização de fotografias e vídeos nos seguintes contextos: [Registos do ATL]
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a utilização de fotografias e vídeos nos seguintes contextos: [Newsletter (sem caras visíveis)]
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a utilização de fotografias e vídeos nos seguintes contextos: [Redes Sociais (sem caras visíveis)]
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a utilização de fotografias e vídeos nos seguintes contextos: [Partilha ao longo do ano e no final do ano, via drive ou email, com todos os pais]
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a cedência do meu contato de e-mail e/ou telefónico a outros pais, caso seja solicitado.
+            </mat-checkbox><br />
+            <mat-checkbox>Autoriza a saída do ATL inserida em atividades organizada.
+            </mat-checkbox><br />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Section: Picture and Related People -->
+      <div class="right-section">
+        <div class="profile-image-section">
+          <img src="https://media.istockphoto.com/id/1399611777/pt/foto/portrait-of-a-smiling-little-brown-haired-boy-looking-at-the-camera-happy-kid-with-good.jpg?s=612x612&w=0&k=20&c=7Jcx5NsIbyqPE2xWamyWQtuwECSox0wmoXvat3elBX8=" alt="Profile Picture" class="profile-picture" />
+        </div>
+
+        
+        <div class="related-people">
+          <h3>Related People  <button mat-raised-button (click)="addData()">Add Adult</button> </h3>
+         
+          <mat-list>
+         
+            <ng-container *ngFor="let person of RelatedPeople; let last = last">
+              <mat-list-item class="listItem">
+                {{ person.name }} - {{ person.relationship }}
+              </mat-list-item>
+              <mat-divider class="divider" *ngIf="!last"></mat-divider>
+            </ng-container>
+
+          </mat-list>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
