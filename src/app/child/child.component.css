@@ -1,0 +1,104 @@
+/* Main content styling */
+.main-content {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Panel container */
+.panel {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 1520px;
+}
+
+/* Header row */
+.header-row h2 {
+  color: #333;
+  margin: 0 0 20px 0;
+  font-size: 1.8em;
+}
+
+
+/* Form field */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Add button */
+.tableAddButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.addButton {
+  background-color: #267ace;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.addButton:hover {
+  background-color: #1565c0;
+}
+
+/* Table */
+.mat-elevation-z8 {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table header and cells */
+table mat-header-cell, table mat-cell {
+  padding: 12px 15px;
+  text-align: left;
+  color: #333;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+/* Row hover effect */
+tr.hovered-row td {
+  background-color: #b8e8f0;
+}
+
+/* No data row */
+.mat-row.mat-no-data-row {
+  font-style: italic;
+  color: #888;
+}
+
+/* Conditions circles */
+.conditions-container {
+  display: flex;
+  gap: 8px;
+}
+
+.circle {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+/* Green color for true condition */
+.circle[style*="color: green"] {
+  background-color: green;
+}
+
+/* Paginator */
+.mat-paginator {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.mat-paginator-page-size {
+  font-weight: bold;
+}
